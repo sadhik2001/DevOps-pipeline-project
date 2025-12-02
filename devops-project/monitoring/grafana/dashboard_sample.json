@@ -1,0 +1,15 @@
+
+{
+  "dashboard": {
+    "id": null,
+    "title": "DevOps Portfolio - Sample",
+    "panels": [
+      {
+        "type": "text",
+        "title": "Info",
+        "gridPos": {"h":2,"w":24,"x":0,"y":0},
+        "options": {"content":"This is a sample dashboard for the DevOps Portfolio project."}
+      }
+    ]
+  }
+}

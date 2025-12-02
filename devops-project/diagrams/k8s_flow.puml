@@ -1,0 +1,9 @@
+
+@startuml
+title Kubernetes Flow
+DockerHub -> K8s : image pulled
+K8s -> Pods : create pods (replicas)
+Pods -> Service : registered
+Service -> Ingress : exposed
+Ingress -> User : route request
+@enduml

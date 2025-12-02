@@ -1,0 +1,32 @@
+
+- hosts: servers
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Ensure docker service started
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Pull app image
+      community.docker.docker_image:
+        name: "{{ docker_image | default('YOUR_DOCKER_USERNAME/devops-portfolio:latest') }}"
+        source: pull
+
+    - name: Run app container
+      community.docker.docker_container:
+        name: devops-portfolio
+        image: "{{ docker_image | default('YOUR_DOCKER_USERNAME/devops-portfolio:latest') }}"
+        state: started
+        restart_policy: always
+        published_ports:
+          - "8080:8080"

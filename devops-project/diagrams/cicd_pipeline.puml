@@ -1,0 +1,10 @@
+
+@startuml
+title CI/CD Pipeline
+Developer -> GitHub : push to main
+GitHub -> Runner : run workflow
+Runner -> Maven : build & test
+Runner -> Docker : build image
+Runner -> DockerHub : push image
+Runner -> K8s : deploy
+@enduml

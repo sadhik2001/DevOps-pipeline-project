@@ -1,0 +1,14 @@
+
+pipeline {
+  agent any
+  environment {
+    DOCKER_IMAGE = credentials('dockerhub-image') // replace with your credential id
+  }
+  stages {
+    stage('Checkout') { steps { checkout scm } }
+    stage('Build') { steps { sh 'mvn -B -DskipTests package -f app/pom.xml' } }
+    stage('Build Docker') { steps { sh 'docker build -t $DOCKER_IMAGE -f docker/Dockerfile .' } }
+    stage('Push Docker') { steps { sh 'docker push $DOCKER_IMAGE' } }
+    stage('Deploy to K8s') { steps { sh 'kubectl apply -f k8s/' } }
+  }
+}

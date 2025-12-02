@@ -1,0 +1,6 @@
+
+@startuml
+title Terraform -> AWS
+Terraform -> AWS : create VPC, Subnet, EC2
+AWS -> EC2 : provision instance
+@enduml

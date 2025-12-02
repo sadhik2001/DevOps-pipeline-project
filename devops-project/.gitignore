@@ -1,0 +1,20 @@
+
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+
+# IDEs
+/.idea
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+
+# Kubernetes / Terraform local state
+*.tfstate
+*.tfstate.*
+.terraform/
+kubeconfig

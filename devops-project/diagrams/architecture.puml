@@ -1,0 +1,10 @@
+
+@startuml
+title DevOps Portfolio - Architecture
+actor Developer
+Developer -> GitHub : push code
+GitHub -> CI_CD : trigger pipeline
+CI_CD -> DockerHub : push image
+CI_CD -> Kubernetes : kubectl apply
+Kubernetes -> Users : serve app
+@enduml
